@@ -1,0 +1,14 @@
+ul.expandable {
+  padding: 0;
+}
+li > img {
+  position: relative;
+  top: 1px;
+  width: auto;
+  height: 1em;
+  margin-right: .5em;
+  vertical-align: text-top;
+}
+ul {
+  list-style: none outside;
+}

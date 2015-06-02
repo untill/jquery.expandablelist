@@ -1,0 +1,51 @@
+<!doctype html>	   <!-- file start -->
+<html lang=en-US>
+  <head>
+    <meta charset=utf-8 />
+    <title>jquery.expandablelist</title>
+    <meta http-equiv="X-UA-Compatible" content="Explorer=; Firefox=38; Safari=; Chrome=43; Opera=12; Konqeror=">
+    <link rel=stylesheet type=text/css href=plugin/jquery.expandablelist-1.0.css />
+  </head>
+
+  <body>
+    <ul class=expandable>
+      <li>Item 1 (3 successors)
+	<ul>
+	  <li>Item 1.1 (no successors)</li>
+	  <li>Item 1.2 (no successors)</li>
+	  <li>Item 1.3 (2 successors)
+	    <ul>
+	      <li>Item 1.3.1 (no successors)</li>
+	      <li>Item 1.3.2 (no successors)</li>
+	    </ul>
+	  </li>
+	</ul>
+      </li>
+      <li>Item 2 (no successors)</li>
+      <li class=expanded>Item 3 (2 successors)
+	<ul>
+	  <li>Item 3.1 (no successors)</li>
+	  <li>Item 3.2 (no successors)</li>
+	</ul>
+      <li>Item 4 (1 successor)
+	<ul>
+	  <li>Item 4.1 (no successors)</li>
+	</ul>
+      </li>
+    </ul>
+
+    <script type="text/javascript" src="thirdparty/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="plugin/jquery.expandablelist-1.0.js"></script>
+    <script type="text/javascript">
+     var timer;
+
+      // invoke upon finished loading
+      $( document).ready( function() {
+        // introduce cross-references with default parameters
+	$( 'ul.expandable').makeExpandable();
+      } );
+    </script>
+
+  </body>
+</html>
+<!-- file end -->

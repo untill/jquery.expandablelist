@@ -1,0 +1,25 @@
+{
+  "name": "jquery.expandablelist",
+  "version": "1.0.0",
+  "description": "This jQuery plugin dynamically hides nested list elements (ul) and shows them when a list is expanded by the user.",
+  "main": "demo/demo.html",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/untill/jquery.expandablelist.git"
+  },
+  "keywords": [
+    "list",
+    "expandable",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Till Halbach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/untill/jquery.expandablelist/issues"
+  },
+  "homepage": "https://github.com/untill/jquery.expandablelist#readme"
+}
