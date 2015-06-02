@@ -13,7 +13,7 @@ jQuery plugin for the creation of expandable lists.
 
 
 description:
-This jQuery plugin dynamically hides nested list elements (ul) and shows them when a list is expanded by the user.
+This jQuery plugin dynamically hides nested list elements (ul) and shows them when a list is expanded by the user. Folding/unfolding can be controlled by keyboard and the mouse. A long click folds/unfolds entire branches. Initial unfolded branches are marked by the class "expanded" on suitable list items in the markup.
 
 
 keywords:
@@ -48,7 +48,8 @@ THE SOFTWARE.
 
 to do:
 - test with more browsers
-- long click on first element: expand/contract all
+- rename to foldablelist
+- revamp documentation
 
 
 == metadata end == */
@@ -88,7 +89,7 @@ to do:
   $.fn.makeExpandable = function( options) {
     // alter settings according to options
     var  settings = $.extend( defaults, options);
-    // handle future expand/contract events
+    // handle future expand/contract events: short/long clicks and keyboard
     $( this).on( 'click keyup', 'li.expanded > img', function( event) {
       // trigger only for selected keys
       if( event.type == 'keyup') {
@@ -113,12 +114,16 @@ to do:
       $( this).attr( 'alt', settings.alts.contracted);
       $( this).attr( 'title', settings.titles.contracted);
       $( this).parent().removeClass( settings.classNames.expanded).addClass( settings.classNames.contracted);
+    } ).on( 'longClick', 'li.expanded > img', function() {  // contractAllItems
+      $( this).parent().find( 'li.expanded > img').add( this).trigger( { type: 'keyup', keyCode: 13 } );
     } ).on( 'expandItem', 'img', function() {
       $( this).siblings( 'ul').show( 'fast');
       $( this).attr( 'src', settings.icons.expanded);
       $( this).attr( 'alt', settings.alts.expanded);
       $( this).attr( 'title', settings.titles.expanded);
       $( this).parent().removeClass( settings.classNames.contracted).addClass( settings.classNames.expanded);
+    } ).on( 'longClick', 'li.contracted > img', function() {  // expandAllItems
+      $( this).parent().find( 'li.contracted > img').add( this).trigger( { type: 'keyup', keyCode: 13 } );
     } );
     // add icons to list items and hide contracted items
     // childless nodes
@@ -146,6 +151,9 @@ to do:
     	tabindex: 0
       } )
     ).children( 'ul').hide();			// .prepend
+    // enable long clicks for tree branch folding/unfolding
+    $( this).find( 'li > img').mayTriggerLongClicks();
+    return $( this);
   }  // $.fn.makeExpandable
   
 } )( jQuery);
