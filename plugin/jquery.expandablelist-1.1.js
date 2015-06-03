@@ -17,7 +17,7 @@ This jQuery plugin dynamically hides nested list elements (ul) and shows them wh
 
 
 keywords:
-list, expandable, jquery-plugin, ecosystem:jquery
+list, expandable, foldable, jquery-plugin, ecosystem:jquery
 
 
 dependencies, compatibility, example call/markup/style:
